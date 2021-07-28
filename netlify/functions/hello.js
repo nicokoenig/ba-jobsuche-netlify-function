@@ -1,4 +1,4 @@
-exports.handler = function getToken() {
+exports.handler = async function getToken() {
   return {
     statusCode: 200,
     body: "hello",

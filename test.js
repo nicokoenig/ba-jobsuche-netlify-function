@@ -29,6 +29,7 @@ const { curly } = require("node-libcurl");
 //   const data = await res.json();
 //   return data.access_token;
 // }
+
 async function getToken() {
   const { data } = await curly.post(
     "https://api-con.arbeitsagentur.de/oauth/gettoken_cc",

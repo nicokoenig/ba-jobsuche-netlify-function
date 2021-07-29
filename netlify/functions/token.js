@@ -1,9 +1,7 @@
-// import fetch from 'node-fetch';
 const fetch = require("node-fetch");
 
 const checkStatus = (res) => {
   if (res.ok) {
-    // res.status >= 200 && res.status < 300
     return res.json();
   } else {
     throw new Error(res.statusText);

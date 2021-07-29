@@ -1,18 +1,15 @@
 {
-  "name": "curl-api",
+  "name": "ba-jobsuche-token-netlify-function",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {},
+  "keywords": [
+    "Arbeitsamt",
+    "Jobsuche"
+  ],
+  "author": "Nico Koenig",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
-    "node-libcurl": "^2.3.3"
+    "node-fetch": "^2.6.1"
   }
 }

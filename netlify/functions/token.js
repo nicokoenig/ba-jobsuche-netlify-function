@@ -28,7 +28,12 @@ exports.handler = async function (event, context, callback) {
     const data = await checkStatus(response);
     callback(null, {
       statusCode: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "GET",
+      },
       body: JSON.stringify(data),
     });
   } catch (error) {

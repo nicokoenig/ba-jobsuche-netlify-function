@@ -25,7 +25,27 @@ exports.handler = async function (event, context, callback) {
         body: "client_id=c003a37f-024f-462a-b36d-b001be4cd24a&client_secret=32a39620-32b3-4307-9aa1-511e3d7f48a8&grant_type=client_credentials",
       }
     );
-    const data = await checkStatus(response);
+    const tokenData = await checkStatus(response);
+    const accessToken = tokenData.access_token;
+
+    let query = "";
+    for (const [key, value] of Object.entries(event.queryStringParameters)) {
+      query += `${key}=${value}&`;
+    }
+    query = query.substr(0, query.length - 1);
+
+    const jobsResponse = await fetch(
+      "https://api-con.arbeitsagentur.de/prod/jobboerse/jobsuche-service/pc/v2/app/jobs?FCT.AKTUALITAET=100&FCT.ANGEBOTSART=ARBEIT&" +
+        query,
+      {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      }
+    );
+    const jobsData = await jobsResponse.json();
+    const jobs = jobsData._embedded;
 
     callback(null, {
       statusCode: 200,
@@ -35,7 +55,7 @@ exports.handler = async function (event, context, callback) {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "GET",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(jobs),
     });
   } catch (error) {
     callback(error);

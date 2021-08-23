@@ -1,3 +1,3 @@
-# Netlify Function for Bundesagentur für Arbeit Token
+# Netlify Function for Bundenagentur für Arbeit Jobsuche
 
-This repo provides a netlify function which returns the required access token to use the [Arbeitsamt Jobsuche API](https://github.com/bundesAPI/jobsuche-api).
+This repo provides a netlify function which wraps the [Arbeitsamt Jobsuche API](https://github.com/bundesAPI/jobsuche-api).
